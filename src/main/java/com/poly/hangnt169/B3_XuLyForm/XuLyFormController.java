@@ -1,15 +1,19 @@
 package com.poly.hangnt169.B3_XuLyForm;
-/**
- * @author hangnt169
- */
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "XuLyFormController", value = "/login")
+/**
+ * @author hangnt169
+ */
+@WebServlet(name = "XuLyFormController", value = {
+        "/login", "/ket-qua"
+})
 public class XuLyFormController extends HttpServlet {
     // controller là tầng trung gian trao đổi giữa client (giao diện - jsp ) với server
     // thông qua phương thức HTTP.
@@ -17,16 +21,25 @@ public class XuLyFormController extends HttpServlet {
     // GET : Hien thi
     // POST: Xu ly
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         // Truyen gia tri tu servlet sang jsp(view)
-        request.setAttribute("h1","Xin chao1");
+        request.setAttribute("h1", "Xin chao1");
         // chuyen trang
-        request.getRequestDispatcher("/view/buoi1/fomr-login.jsp").forward(request,response);
+        request.getRequestDispatcher("/view/buoi1/fomr-login.jsp").forward(request, response);
 //        response.sendRedirect("/fomr-login.jsp");
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Lấy giá trị từ view(JSP)sang Controller(Servlet)
+        String username = request.getParameter("uname");
+        String password = request.getParameter("psw");
 
+        // Truyền giá trị từ servlet sang JSP
+        request.setAttribute("u1", username);
+        request.setAttribute("u2", password);
+
+        // chuyển trang
+        request.getRequestDispatcher("/view/buoi1/ket-qua-login.jsp").forward(request, response);
     }
 }

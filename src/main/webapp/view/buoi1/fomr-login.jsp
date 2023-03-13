@@ -12,7 +12,7 @@
 </head>
 <body>
 ${h1}
-<form action="" method="post">
+<form action="/ket-qua" method="post">
 
     <div class="container">
         <label for="uname"><b>Username</b></label>
@@ -23,5 +23,6 @@ ${h1}
 
         <button type="submit">Login</button>
     </div>
+</form>
 </body>
 </html>
