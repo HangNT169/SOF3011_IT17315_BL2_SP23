@@ -24,4 +24,14 @@ public class SinhVienServiceImpl implements SinhVienService {
         lists.add(new SinhVien("DungNA29", "Nguyễn Anh Dũng", 15, "Hà Nội4", true));
         return lists;
     }
+
+    @Override
+    public SinhVien getOne(List<SinhVien> lists, int index) {
+        return lists.get(index);
+    }
+
+    @Override
+    public void removeStudent(List<SinhVien> lists, int index) {
+        lists.remove(index);
+    }
 }

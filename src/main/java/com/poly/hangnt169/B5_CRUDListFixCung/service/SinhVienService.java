@@ -11,4 +11,8 @@ public interface SinhVienService {
 
     List<SinhVien>fakeData();
 
+    SinhVien getOne(List<SinhVien>lists,int index);
+
+    void removeStudent(List<SinhVien>lists,int index);
+
 }
